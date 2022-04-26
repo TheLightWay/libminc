@@ -33,7 +33,7 @@ $ gcc -nostdlib -nostdinc -I /usr/include/minc [your other command line argument
 -nostdinc               don't use any default include directories
 -I /usr/include/minc    set /usr/include/minc as an include directory
 -lminc                  dynamically link libminc with your program
--l:libminstart.a        statically link libminstart.a with your program, this includes _start
+-l:libminc.a            statically link libminc.a with your program, this includes _start
 ```
 extras
 ```
