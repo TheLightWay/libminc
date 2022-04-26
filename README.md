@@ -25,7 +25,7 @@ this library will not override glibc or whatever library you have currently inst
 
 ### to compile your project and use this library, run
 ```console
-$ gcc -nostdlib -nostdinc -I /usr/include/minc [your other command line arguments] [files] -lminc -l:libminstart.a
+$ gcc -nostdlib -nostdinc -I /usr/include/minc [your other command line arguments] [files] -lminc -l:libminc.a
 ```
 #### how does this work?
 ```
