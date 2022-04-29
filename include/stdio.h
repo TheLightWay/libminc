@@ -19,6 +19,12 @@ int puts(const char *str);
 /* print str to f */
 int fputs(const char *str, FILE *f);
 
+/* print c to f */
+int fputc(int c, FILE *f);
+
+/* print c to f */
+int putc(int c, FILE *f);
+
 /* open file */
 FILE *fopen(const char *path, const char *mode);
 
