@@ -11,7 +11,7 @@ and exit the program using exit.
 
 `syscalls.S` will define wrappers for every syscall in the operating system.
 
-## what does the wrapper look like?
+## what does a wrapper look like?
 Lets take a look. It will have 3 parts. Lets look at an amd64 linux syscall
 in steps:
 
