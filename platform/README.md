@@ -20,7 +20,11 @@ in steps:
 uses
 3. run `syscall` to invoke the OS
 
-Note that sometimes you won't need to move any arguments. Sometimes, they already match up.
+Notes:
+ - `rax` is used for Linux syscalls. It may be different for other operating systems.
+ - Sometimes, the arguments already match up and step 2 is unecessary.
+ - in x86, syscall is not an instruction, use `int $0x80` in Linux x86 for example
+
 ```x86asm
 sys_write:
     mov $1, %rax
