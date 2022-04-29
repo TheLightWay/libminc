@@ -8,10 +8,12 @@ _start:
     # initializes global variables
     call    mincinit
 
-    # move argc and argv onto registers and then call main
-    mov     (%rsp),     %rdi
-    lea     8(%rsp),    %rsi
-    lea     16(%rsp),   %rdx
+    # move argc, argv, and envp onto registers and then call main
+    mov     (%rsp),             %rdi
+    lea     8(%rsp),            %rsi
+    mov     %rdi,               %rcx
+    add     $2,                 %rcx
+    lea     (%rsp, %rcx, 8),    %rdx
     call    main
 
     # reuse this position on the heap to store the return of main
