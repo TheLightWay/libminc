@@ -1,13 +1,14 @@
 # what this project is
 This is my attempt at a C Standard Library that is meant to be easy to read and hack.
 One thing I've noticed with most libraries is that they are incredibly hard to follow along with and require a lot of reading to figure out how it's actually structured.
-Not for this library. All you need to know is the two simple directories.
 
 ## directory tree
 ```
 include/        header files for the library
 src/            source files for the library
+platform/       platform specific code
 ```
+
 ### notes
 `src/` contains every function in it's own `.c` file, contained in a folder named after the header file you import to use it. For example: `puts` is stored in [src/stdio/puts.c](src/stdio/puts.c).
 
@@ -25,7 +26,7 @@ this library will not override glibc or whatever library you have currently inst
 
 ### to compile your project and use this library, run
 ```console
-$ gcc -nostdlib -nostdinc -I /usr/include/minc [your other command line arguments] [files] -lminc -l:libminc.a
+$ gcc -nostdlib -nostdinc -I /usr/include/minc [other arguments] [files] -lminc -l:libminc.a
 ```
 #### how does this work?
 ```
@@ -34,10 +35,6 @@ $ gcc -nostdlib -nostdinc -I /usr/include/minc [your other command line argument
 -I /usr/include/minc    set /usr/include/minc as an include directory
 -lminc                  dynamically link libminc with your program
 -l:libminc.a            statically link libminc.a with your program, this includes _start
-```
-extras
-```
--D__MIN_EXTENSIONS__  allow use of extended functions and macros
 ```
 
 ### and finally, to uninstall, run

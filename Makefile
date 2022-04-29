@@ -1,26 +1,30 @@
 
 CC=gcc
-CFLAGS=-Wall -Werror -O3 -std=c89 -pedantic -nostdlib -nostdinc -I./include
-
-all: libminc.so libminc.a
-
+CFLAGS=-Wall -Wextra -O2 -std=c89 -pedantic -nostdlib -nostdinc -I./include -I./platform
 LIBRARY_FUNCTIONS=$(shell find "./src" -name "*.c")
 
-libminc.so: $(LIBRARY_FUNCTIONS) src/syscalls.S
+# must be the path to ./platform/OS/ARCH
+PLATFORM=./platform/linux/amd64
+
+all: libminc.so libminc.a cleanc
+
+libminc.so: $(LIBRARY_FUNCTIONS) $(PLATFORM)/_start.S $(PLATFORM)/syscalls.S
 	$(CC) $(CFLAGS) -c -fpic $^
 	$(CC) -shared -o $@ *.o
 
-libminc.a: src/_start.S src/syscalls.S
+libminc.a: $(PLATFORM)/_start.S $(PLATFORM)/syscalls.S
 	$(CC) $(CFLAGS) -c $^
 	ld -relocatable _start.o syscalls.o -o $@
 
-remove_objects:
+# the c means nothing, this is just to clean the .o files while also letting clean
+# be for everything
+cleanc:
 	$(RM) *.o
 
 clean:
 	$(RM) *.a *.so *.o
 
-install: all
+install:
 	cp libminc.so libminc.a /usr/lib/
 	cp -r include/ /usr/include/minc/
 

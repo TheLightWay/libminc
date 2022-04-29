@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include <assembly/syscalls.h>
+#include <shared/syscalls.h>
 
 void exit(int exit_status)
 {

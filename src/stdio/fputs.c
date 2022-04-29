@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <string.h>
-#include <assembly/syscalls.h>
+#include <shared/syscalls.h>
 
 int fputs(const char *str, FILE *f)
 {
-    int count = 0;
+    int count;
     __acquire_lock(f);
 
-    count += sys_write(f->fd, str, strlen(str));
+    count = sys_write(f->fd, str, strlen(str));
 
     __release_lock(f);
     return count;

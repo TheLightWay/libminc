@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <assembly/syscalls.h>
+#include <shared/syscalls.h>
 
 void fclose(FILE *f)
 {

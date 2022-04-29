@@ -8,7 +8,6 @@
 /* constants */
 #include "constants/NULL.h"
 
-
 /* globals */
 extern FILE *stdin;
 extern FILE *stdout;
