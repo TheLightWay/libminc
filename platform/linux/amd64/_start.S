@@ -11,9 +11,8 @@ _start:
     # move argc, argv, and envp onto registers and then call main
     mov     (%rsp),             %rdi
     lea     8(%rsp),            %rsi
-    mov     %rdi,               %rcx
-    add     $2,                 %rcx
-    lea     (%rsp, %rcx, 8),    %rdx
+    lea     (%rsp, %rdi, 8),    %rdx
+    add     $16,                %rdx
     call    main
 
     # reuse this position on the heap to store the return of main
