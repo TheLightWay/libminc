@@ -19,6 +19,9 @@ int puts(const char *str);
 /* print str to f */
 int fputs(const char *str, FILE *f);
 
+/* print c to stdout */
+int putchar(int c);
+
 /* print c to f */
 int fputc(int c, FILE *f);
 
