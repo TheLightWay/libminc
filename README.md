@@ -28,6 +28,7 @@ this library will not override glibc or whatever library you have currently inst
 ```console
 $ gcc -nostdlib -nostdinc -I /usr/include/minc [other arguments] [files] -lminc -l:libminc.a
 ```
+
 #### how does this work?
 ```
 -nostdlib               disable linking with glibc
