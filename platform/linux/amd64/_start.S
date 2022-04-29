@@ -2,7 +2,7 @@
 
 /* ======== _START ======== */
     .global _start
-    .type	_start, @function
+    .type   _start, @function
 _start:
     # initialization code, allocates stdin, stdout, stderr
     # initializes global variables
@@ -25,4 +25,4 @@ _start:
     mov     (%rsp),     %rdi
     call    exit
     hlt
-    .size	_start, .-_start
+    .size   _start, .-_start
