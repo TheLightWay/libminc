@@ -13,7 +13,7 @@ char *strncat(char *dest, const char *src, size_t n)
         tmpd[i] = src[i];
 
         if (src[i] == 0)
-            return dest;
+            break;
     }
 
     tmpd[i] = 0;

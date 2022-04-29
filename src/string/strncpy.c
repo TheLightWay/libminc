@@ -9,10 +9,11 @@ char *strncpy(char *dest, const char *src, size_t n)
         dest[i] = src[i];
 
         if (src[i] == 0)
-            return dest;
+            break;
     }
 
-    dest[i] = 0;
+    for (; i < n; i++)
+        dest[i] = 0;
 
     return NULL;
 }
