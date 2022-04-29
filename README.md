@@ -42,5 +42,10 @@ $ gcc -nostdlib -nostdinc -I /usr/include/minc [other arguments] [files] -lminc 
 $ sudo make uninstall
 ```
 
+### libminc doesn't support your platform?
+If you want support for your platform:
+ 1. add support yourself, see `platform/README.md`
+ 2. request support (aprilkahny@gmail.com)
+
 # I am not a professional
 Do not think this is better code than glibc or any other implementation. I am stupid. This is an honest attempt, and it would take a long time before it becomes an honest replacement for any established library.

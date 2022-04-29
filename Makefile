@@ -6,7 +6,7 @@ LIBRARY_FUNCTIONS=$(shell find "./src" -name "*.c")
 # must be the path to ./platform/OS/ARCH
 PLATFORM=./platform/linux/amd64
 
-all: libminc.so libminc.a cleanc
+all: $(PLATFORM) libminc.so libminc.a cleanc
 
 libminc.so: $(LIBRARY_FUNCTIONS) $(PLATFORM)/_start.S $(PLATFORM)/syscalls.S
 	$(CC) $(CFLAGS) -c -fpic $^
