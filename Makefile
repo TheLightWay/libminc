@@ -1,6 +1,6 @@
 
 CC=gcc
-CFLAGS=-Wall -Wextra -O2 -std=c89 -pedantic -nostdlib -nostdinc -I./include -I./platform
+CFLAGS=-Wall -O2 -std=c89 -pedantic -nostdlib -nostdinc -I./include -I./platform
 LIBRARY_FUNCTIONS=$(shell find "./src" -name "*.c")
 
 # must be the path to ./platform/OS/ARCH
