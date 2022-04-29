@@ -1,6 +1,21 @@
 # Platform
 This is the platform specific code.
 
+## shared
+this directory contains code that is shared across operating systems.
+Most Unix and Unix-like systems share the same syscall names, so it makes
+sense to add them all to a single header file in `shared/syscalls.h`.
+
+Each syscall in this directory acts pretty much the same as its equivalent
+from `unistd.h`. The only exception is this straight up calls the syscall,
+so there is no wrapper for it. (`unistd.h` likes to add error handling and such)
+The syscalls are essentially less standard than what you get from `unistd.h`
+but it is important to have access to the syscalls directly.
+
+## types
+Stores header files with each type that the syscalls need. Probably temporary.
+
+# How to add a platform
 every platform has an OS directory, and then has an architecture folder.
 ex: `linux/amd64` is the directory for x86_64 Linux platforms. In
 this directory, there are 2 files: `_start.S` and `syscalls.S`.
