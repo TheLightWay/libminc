@@ -55,7 +55,7 @@ int sys_close(unsigned int fd);
 #define MAP_SHARED      0x01
 #define MAP_PRIVATE     0x02
 
-/* allocate memory to the heap */
+/* allocate memory on the heap */
 void *sys_mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset);
 
 /* deallocate memory allocated with sys_mmap */
