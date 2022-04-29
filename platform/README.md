@@ -12,9 +12,6 @@ so there is no wrapper for it. (`unistd.h` likes to add error handling and such)
 The syscalls are essentially less standard than what you get from `unistd.h`
 but it is important to have access to the syscalls directly.
 
-## types
-Stores header files with each type that the syscalls need. Probably temporary.
-
 # How to add a platform
 every platform has an OS directory, and then has an architecture folder.
 ex: `linux/amd64` is the directory for x86_64 Linux platforms. In
