@@ -15,7 +15,7 @@ _start:
     add     $16,                %rdx
     call    main
 
-    # reuse this position on the heap to store the return of main
+    # reuse this position on the stack to store the return of main
     mov     %rax,       (%rsp)
 
     # finalize code
