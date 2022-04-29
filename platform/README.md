@@ -23,11 +23,16 @@ uses
 Notes:
  - `rax` is used for Linux syscalls. It may be different for other operating systems.
  - Sometimes, the arguments already match up and step 2 is unecessary.
- - in x86, syscall is not an instruction, use `int $0x80` in Linux x86 for example
+ - In x86, syscall is not an instruction, use `int $0x80` in Linux x86 for example
+ - Don't forget to make it global! This makes it visible outside of the file it's in.
 
 ```x86asm
+    .global sys_write
 sys_write:
     mov $1, %rax
     syscall
     ret
 ```
+
+You can tell from the notes alone that making a syscall may be very different
+across operating systems and architectures. Be sure to read the docs on your platform.
