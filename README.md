@@ -1,3 +1,5 @@
+I know it says "Unix and Unix-like operating systems" but as of now it only supports Linux. pls don't hurt me.
+
 # what this project is
 This is my attempt at a C Standard Library that is meant to be easy to read and hack.
 One thing I've noticed with most libraries is that they are incredibly hard to follow along with and require a lot of reading to figure out how it's actually structured.
