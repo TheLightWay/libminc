@@ -6,9 +6,9 @@ LIBRARY_FUNCTIONS=$(shell find "./src" -name "*.c")
 # must be the path to ./platform/OS/ARCH
 PLATFORM=./platform/linux/amd64
 
-all: $(PLATFORM) libminc.so libminc.a cleanc
+all: $(PLATFORM) libminc.so libminc.a cleanobj
 
-libminc.so: $(LIBRARY_FUNCTIONS) $(PLATFORM)/_start.S $(PLATFORM)/syscalls.S
+libminc.so: $(LIBRARY_FUNCTIONS)
 	$(CC) $(CFLAGS) -c -fpic $^
 	$(CC) -shared -o $@ *.o
 
@@ -16,9 +16,7 @@ libminc.a: $(PLATFORM)/_start.S $(PLATFORM)/syscalls.S
 	$(CC) $(CFLAGS) -c $^
 	ld -relocatable _start.o syscalls.o -o $@
 
-# the c means nothing, this is just to clean the .o files while also letting clean
-# be for everything
-cleanc:
+cleanobj:
 	$(RM) *.o
 
 clean:
