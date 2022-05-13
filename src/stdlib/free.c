@@ -12,5 +12,5 @@ void free(void *mem)
 
     size = ((HTYPE*)memptr)[0];
 
-    sys_munmap(memptr, size);
+    sys_munmap(memptr, size + HSIZE);
 }
