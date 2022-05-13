@@ -4,7 +4,7 @@ FILE *stdin;
 FILE *stdout;
 FILE *stderr;
 
-int errno;
+__thread int errno;
 
 void mincinit()
 {

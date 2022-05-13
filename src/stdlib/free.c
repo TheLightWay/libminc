@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include <shared/syscalls.h>
+#include <sys/mman.h>
 
 #include "htype.h"
 
@@ -12,5 +12,5 @@ void free(void *mem)
 
     size = ((HTYPE*)memptr)[0];
 
-    sys_munmap(memptr, size + HSIZE);
+    munmap(memptr, size + HSIZE);
 }

@@ -1,31 +1,33 @@
 
-CC=gcc
-CFLAGS=-Wall -O2 -std=c89 -pedantic -nostdlib -nostdinc -I./include -I./platform
-LIBRARY_FUNCTIONS=$(shell find "./src" -name "*.c")
+CFLAGS=-Wall -O2 -std=c89 -pedantic \
+	-nostdlib -nostdinc -nostartfiles \
+	-I./include -I./platform
 
-# must be the path to ./platform/OS/ARCH
+# must be the path to platform/OS/ARCH
 PLATFORM=./platform/linux/amd64
 
-all: $(PLATFORM) libminc.so libminc.a cleanobj
+LIBRARY_FUNCTIONS=$(shell find "./src" -name "*.c")
+PLATFORM_WRAPPER=$(shell find $(PLATFORM)/wrapper/ -name "*.c")
 
-libminc.so: $(LIBRARY_FUNCTIONS)
+all: $(PLATFORM) include/sys/syscall.h libminc.so mincrt1.o
+
+include/sys/syscall.h: $(PLATFORM)/include/sys/syscall.h
+	cp $^ $@
+
+libminc.so: $(LIBRARY_FUNCTIONS) $(PLATFORM_WRAPPER)
 	$(CC) $(CFLAGS) -c -fpic $^
 	$(CC) -shared -o $@ *.o
 
-libminc.a: $(PLATFORM)/_start.S $(PLATFORM)/syscalls.S
+mincrt1.o: $(PLATFORM)/_start.S $(PLATFORM)/syscall.S
 	$(CC) $(CFLAGS) -c $^
-	ld -relocatable _start.o syscalls.o -o $@
-
-cleanobj:
-	$(RM) *.o
+	ld -relocatable _start.o syscall.o -o $@
 
 clean:
-	$(RM) *.a *.so *.o
+	$(RM) *.a *.so *.o include/sys/syscall.h
 
 install:
-	cp libminc.so libminc.a /usr/lib/
-	cp -r include/ /usr/include/minc/
+	cp libminc.so mincrt1.o /usr/lib/
+	cp -r include/ /usr/include/minc
 
 uninstall:
-	$(RM) /usr/lib/libminc.so /usr/lib/libminc.a
-	$(RM) -r /usr/include/minc/
+	$(RM) -r /usr/include/minc/ /usr/lib/minc/
