@@ -1,6 +1,8 @@
 #include <stdio.h>
 
+extern void atomic_equ(int *l, int val);
+
 void __release_lock(FILE *f)
 {
-    f->lock = 0;
+    atomic_equ(&f->lock, 0);
 }

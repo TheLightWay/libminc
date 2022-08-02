@@ -1,5 +1,5 @@
 
-CFLAGS=-Wall -O2 -std=c89 -pedantic \
+CFLAGS=-Wall -g -O0 -std=c89 -pedantic \
 	-nostdlib -nostdinc -nostartfiles \
 	-I./include -I./platform
 
@@ -18,9 +18,9 @@ libminc.so: $(LIBRARY_FUNCTIONS) $(PLATFORM_WRAPPER)
 	$(CC) $(CFLAGS) -c -fpic $^
 	$(CC) -shared -o $@ *.o
 
-mincrt1.o: $(PLATFORM)/_start.S $(PLATFORM)/syscall.S
+mincrt1.o: $(PLATFORM)/_start.S $(PLATFORM)/syscall.S $(PLATFORM)/atomic.S
 	$(CC) $(CFLAGS) -c $^
-	ld -relocatable _start.o syscall.o -o $@
+	ld -relocatable _start.o syscall.o atomic.o -o $@
 
 clean:
 	$(RM) *.a *.so *.o include/sys/syscall.h
@@ -30,4 +30,4 @@ install:
 	cp -r include/ /usr/include/minc
 
 uninstall:
-	$(RM) -r /usr/include/minc/ /usr/lib/minc/
+	$(RM) -r /usr/include/minc/ /usr/lib/libminc.so /usr/lib/mincrt1.o
