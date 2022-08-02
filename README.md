@@ -28,7 +28,7 @@ this library will not override glibc or whatever library you have currently inst
 
 ### to compile your project and use this library, run
 ```console
-$ gcc -nostdlib -nostdinc -I /usr/include/minc [other arguments] [files] -lminc -l:libminc.a
+$ gcc -nostdlib -nostdinc -I /usr/include/minc [other arguments] [files] -lminc -l:libcrt1.o
 ```
 
 #### how does this work?
