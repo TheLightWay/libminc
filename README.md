@@ -47,7 +47,7 @@ $ sudo make uninstall
 
 ### libminc doesn't support your platform?
 If you want support for your platform:
- 1. add support yourself, see `platform/README.md`
+ 1. add support yourself, see `platform/CONTRIBUTING.md`
  2. request support (aprilkahny@gmail.com)
 
 # I am not a professional
